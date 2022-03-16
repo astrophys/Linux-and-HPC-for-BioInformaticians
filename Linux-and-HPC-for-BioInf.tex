@@ -87,6 +87,23 @@ INCLUDE IMAGES HERE
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Why use Linux?}
+\begin{itemize}
+    \item Package managers (e.g. \code{yum})
+    \bigskip
+    \item Built for programming. Comes with compilers, editors etc.
+    \bigskip
+    \item Great online resources (e.g. https://stackoverflow.com/)
+    \bigskip
+    \item Customizable
+    \bigskip
+    \item Dominant HPC platform.
+\end{itemize}
+\end{frame}
+ 
+
 \begin{frame}
 \frametitle{Why use Linux?}
 Two user perspectives : 
@@ -170,13 +187,13 @@ Two user perspectives :
             \item[-] No NSA keys
             \item[-] You won't become a monetized consumer product by your OS.
         \end{itemize}
-        \item Almost All High Performance Computing (HPC) clusters have 
+        \item All High Performance Computing (HPC) clusters use Linux
     \end{enumerate}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}
+begin{frame}
 \frametitle{What is HPC?}
 \begin{itemize}
     \item Q : What is High Performance Computing (HPC)?
@@ -212,12 +229,17 @@ Two user perspectives :
 
 
 \begin{frame}
-\frametitle{Why use HPC at work?}
-I currently use Windows, why should I use 
-\begin{itemize}
-    \item 
-\end{itemize}
+\frametitle{HPC Cluster Architecture}
+\begin{picture}(320,250)  %must be related to where it is centered
+%\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File.eps}}
+%\setbeamercolor{background canvas}{bg=}
+%\includepdf{images/GPFS_File-eps-converted-to.pdf}
+%\includepdf{images/GPFS_File-eps-converted-to.pdf}
+\put(0, 70){\includegraphics[height=2.5in]{images/franklin-cluster.pdf}}
+\end{picture}
 \end{frame}
+
+
 
 
 \begin{frame}
@@ -230,56 +252,49 @@ Windows:
     \item Enter password
 \end{itemize}
 
+\pause
+
 Mac:
 \begin{itemize}
     \item Open Terminal (Finder $\Rightarrow$ Utilities $\Rightarrow$ Terminal)
     \item \code{ssh -X username@r1pl-hpcf-log01}
 \end{itemize}
 
-\end{frame}
+\pause
 
-
-\begin{frame}
-\frametitle{Cluster Architecture}
-\begin{picture}(320,250)  %must be related to where it is centered
-%\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File.eps}}
-%\setbeamercolor{background canvas}{bg=}
-%\includepdf{images/GPFS_File-eps-converted-to.pdf}
-%\includepdf{images/GPFS_File-eps-converted-to.pdf}
-
-\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File-eps-converted-to.pdf}}
-\end{picture}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{What is Linux?}
-Operating System
+eChart:
 \begin{itemize}
-    \item Bootloader 
-    \item Kernel - interface between the hardware and operating system. Manages processes.
-    \item Daemons - background processes
-    \item Graphical Interface -  X11 or X
-    \item Shell - a.k.a. ``The Command Line".  This will be where you interface with Linux.
+    \item Go to: nchapps.nationwidechildrens.org/
+    \item Click on ‘Desktops’ at top
+    \item Click on eChart Connect Desktop-Win10
+    \item Click finder magnifying glass. Search for HPC
+    \item Click XLaunch. Click Next / Finish for all following windows.  A little ‘x’ will
+          be at the bottom right of your screen
+    \item Click finder magnifying glass. Search for HPC.
+    \item Click Putty. 
+    \begin{enumerate}
+        \item Host Name = r1pl-hpcf-log01
+        \item Check Connection->SSH-> X11-> Enable X11 forwarding. 
+        \item Check Connection-> SSH ->Enable compression
+        \item Click "Open"
+    \begin{enumerate}
+
+In Putty Window, enter your userID and password when prompted
 \end{itemize}
 \end{frame}
- 
 
-\begin{frame}
-\frametitle{Why use Linux?}
-\begin{itemize}
-    \item Package managers (e.g. \code{yum})
-    \bigskip
-    \item Built for programming. Comes with compilers, editors etc.
-    \bigskip
-    \item Great online resources (e.g. https://stackoverflow.com/)
-    \bigskip
-    \item Customizable
-    \bigskip
-    \item Dominant HPC platform.
-\end{itemize}
-\end{frame}
+
+%\begin{frame}
+%\frametitle{What is Linux?}
+%Operating System
+%\begin{itemize}
+%    \item Bootloader 
+%    \item Kernel - interface between the hardware and operating system. Manages processes.
+%    \item Daemons - background processes
+%    \item Graphical Interface -  X11 or X
+%    \item Shell - a.k.a. ``The Command Line".  This will be where you interface with Linux.
+%\end{itemize}
+%\end{frame}
  
 
 \begin{frame}
