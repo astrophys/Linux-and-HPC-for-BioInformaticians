@@ -54,9 +54,10 @@
  
 \frame{\titlepage}
 
+\section{Linux}
+
 \begin{frame}
-\frametitle{What is Linux?}
-INCLUDE IMAGES HERE
+\frametitle{What and where is Linux?}
 \begin{itemize}
     \item It is an Operating System, just like Mac OS and Windows  
     \pause 
@@ -66,42 +67,79 @@ INCLUDE IMAGES HERE
         \pause 
         \item All your `smart' home devices run Linux
         \pause 
-        \item It is in millions of cloud servers powering AWS (Amazon Web Services) and Google Cloud.
+        \item It is in millions of cloud servers
+        \begin{enumerate}
+            \item AWS (Amazon Web Services)
+            \item Google Cloud.
+        \end{enumerate}
         \pause 
         \item It runs the world's most `cutting edge' scientific experiments
-        \begin{itemize}
-            \item[-] International Space Station
-            \pause
-            \item[-] CERN's Large Hadron Collider (of Higg's boson fame)
-            \pause
-            \item[-] Perserverance (incl. Ingenuity, the Mars Helicopter)
-            \pause
-            \item[-] Large Binocular Telescope
-            \pause
-            \item[-] Square Kilometer Array - Processing 600PB per year
-            \pause
-            \item[-] Climate Simulations 
-            \pause
-        \end{itemize}
     \end{enumerate}
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Why use Linux?}
+\frametitle{Linux in Science}
+\begin{picture}(320,250)
+\visible<1>{\put(165, 100){\includegraphics[height=1.5in]{images/spacestationfaqs-small.jpg}}}
+\visible<2>{\put(165, 100){\includegraphics[height=1.5in]{images/LHC-small.jpg}}}
+\visible<3>{\put(165, 100){\includegraphics[height=1.5in]{images/perserverance.jpg}}}
+\visible<4>{\put(205, 100){\includegraphics[height=1.5in]{images/LBT.jpg}}}
+\visible<5>{\put(165, 100){\includegraphics[height=1.5in]{images/ska.jpg}}}
+\visible<6>{\put(165, 70){\includegraphics[height=1.75in]{images/climate.jpg}}}
+\put(-20, 220){\begin{minipage}[t]{0.6 \linewidth}
+{
+Linux in Science : 
 \begin{itemize}
-    \item Package managers (e.g. \code{yum})
-    \bigskip
-    \item Built for programming. Comes with compilers, editors etc.
-    \bigskip
-    \item Great online resources (e.g. https://stackoverflow.com/)
-    \bigskip
-    \item Customizable
-    \bigskip
-    \item Dominant HPC platform.
+    { \small
+    \item International Space Station
+    \smallskip
+    \pause
+    \item CERN's Large Hadron Collider 
+    \begin{itemize}
+        \item[-] (of Higg's boson fame)
+    \end{itemize}
+    \smallskip
+    \pause
+    \item Perserverance
+    \begin{itemize}
+        \item[-] (incl. Ingenuity, the Mars Helicopter)
+    \end{itemize}
+    \smallskip
+    \pause
+    \item Large Binocular Telescope
+    \smallskip
+    \pause
+    \item Square Kilometer Array 
+    \begin{itemize}
+        \item[-] Processing 600PB per year
+    \end{itemize}
+    \smallskip
+    \pause
+    \item Climate Simulations 
+    }
 \end{itemize}
+}
+\end{minipage}}
+\end{picture}
 \end{frame}
+
+
+%\begin{frame}
+%\frametitle{Why use Linux?}
+%\begin{itemize}
+%    \item Package managers (e.g. \code{yum})
+%    \bigskip
+%    \item Built for programming. Comes with compilers, editors etc.
+%    \bigskip
+%    \item Great online resources (e.g. https://stackoverflow.com/)
+%    \bigskip
+%    \item Customizable
+%    \bigskip
+%    \item Dominant HPC platform.
+%\end{itemize}
+%\end{frame}
 
 
 \begin{frame}
@@ -192,6 +230,7 @@ Two user perspectives :
 \end{itemize}
 \end{frame}
 
+\section{HPC}
 
 \begin{frame}
 \frametitle{What is HPC?}
@@ -644,6 +683,19 @@ Create a bash script that says ``Hello World". Make it executable.
     \item https://www.skatelescope.org/software-and-computing/
 \end{itemize}
 \end{frame}
+
+
+%\begin{frame}
+%\frametitle{Images}
+%\begin{itemize}
+%    \item https://www.nasa.gov/sites/default/files/thumbnails/image/spacestationfaqs.jpg
+%    \item https://home.cern/news/news/accelerators/lhc-rocks-seesaw-model
+%    \item https://mars.nasa.gov/resources/26253/perseverances-selfie-at-rochette/
+%    \item LBT By Mohamed Osama AlNagdy, 2010-12-13 - de:File:LargeBinoTelescope_NASA.jpg, auf etwa 40\% beschnitten, Copyrighted free use, https://commons.wikimedia.org/w/index.php?curid=32980017
+%    \item https://www.skatelescope.org/news/green-light-for-ska-construction/
+%    \item https://www.csm.ornl.gov/PR/PR2006/hpc-07-21-06.html
+%\end{itemize}
+%\end{frame}
 
 \end{document}
 
