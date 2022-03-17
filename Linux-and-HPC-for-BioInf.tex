@@ -394,22 +394,50 @@ eChart:
  
 \section{Linux}
 
+%\begin{frame}
+%\frametitle{Types of Users}
+%\begin{itemize}
+%    \item Regular users (you)
+%    \bigskip
+%    \pause
+%    \item Privileged users (Yuan and myself)
+%    \bigskip
+%    \pause
+%    \begin{enumerate}
+%        \item Can modify \code{/usr}, \code{/opt}, etc.
+%        \bigskip
+%        \pause
+%        \item \code{sudo}
+%    \end{enumerate}
+%\end{itemize}
+%\end{frame}
+
+
 \begin{frame}
 \frametitle{Types of Users}
-\begin{itemize}
-    \item Regular users (you)
-    \bigskip
-    \pause
-    \item Privileged users (Yuan and myself)
-    \bigskip
-    \pause
-    \begin{enumerate}
-        \item Can modify \code{/usr}, \code{/opt}, etc.
-        \bigskip
-        \pause
-        \item \code{sudo}
-    \end{enumerate}
-\end{itemize}
+   \begin{picture}(320,250)  %must be related to where it is centered
+    \visible<4>{\put(30, 145){\includegraphics[height=1.5in]{images/xkcd-incident.png}}}
+    \put(-20, 130){\begin{minipage}[t]{0.6 \linewidth}
+    {
+        \begin{itemize}
+            \item Regular users (you)
+            \pause
+            \item Privileged users (Yuan and myself)
+            \pause
+            \begin{enumerate}
+                \item Can modify \code{/usr}, \code{/opt}, etc.
+                \pause
+                \item \code{sudo}
+            \end{enumerate}
+        \end{itemize}
+    }
+    \end{minipage}}
+    %\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File.eps}}
+    %\setbeamercolor{background canvas}{bg=}
+    %\includepdf{images/GPFS_File-eps-converted-to.pdf}
+    %\includepdf{images/GPFS_File-eps-converted-to.pdf}
+    %\put(65, 70){\includegraphics[height=2.5in]{images/linux-shell-small.jpg}}
+    \end{picture}
 \end{frame}
 
 
@@ -1170,6 +1198,7 @@ Create a bash script that says ``Hello World" and submit it to the cluster.
     \item \chref{https://www.skatelescope.org/news/green-light-for-ska-construction/}{SKA - Public Domain}
     \item \chref{https://www.csm.ornl.gov/PR/PR2006/hpc-07-21-06.html}{Climate Modeling - Fair Use}
     \item \chref{https://external-preview.redd.it/M11dk9cVQ4nHdBHWPGR0w4-2p\_S0CRTuiFRWNkM3Bks.png?auto=webp&s=021bc36b5e08fe70156ac635a9530fdc438acf4a}{Linux Shell by JaceTheSaltScultor - Fair Use}
+    \item \chref{https://xkcd.com/838/}{XKCD - Incident by Randall Munroe - Creative Commons}
 \end{itemize}
 \end{frame}
 
