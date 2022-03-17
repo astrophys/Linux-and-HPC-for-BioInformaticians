@@ -14,6 +14,7 @@
 \usepackage{psfrag}
 \usepackage{pdfpages}
 \usepackage{tikz}
+\usepackage{listings}
 %\usepackage[style=authoryear]{biblatex}
 %\bibliography{/Users/ali/Library/texmf/bibtex/bib/references}
 
@@ -43,11 +44,19 @@
 
 
 %Information to be included in the title page:
-\title{Introduction to Linux and HPC for the Bioinformatics Class}
+\title{Introduction to Linux and HPC for Bioinformaticians }
 \author{Ali Snedden}
 \institute{Nationwide Children's Hospital}
 \date{March 17, 2022}
  
+% Recurring Outline
+\AtBeginSection[]  % "Beamer, do the following at the start of every section"
+{
+\begin{frame}<beamer>
+\frametitle{Outline} % make a frame titled "Outline"
+\tableofcontents[currentsection]  % show TOC and highlight current section
+\end{frame}
+}
  
  
 \begin{document}
@@ -57,7 +66,7 @@
 \section{Introduction}
 
 \begin{frame}
-\frametitle{What and where is Linux?}
+\frametitle{What is Linux?}
 \begin{itemize}
     \item It is an Operating System, just like Mac OS and Windows  
     \pause 
@@ -70,6 +79,7 @@
         \item It is in millions of cloud servers
         \begin{enumerate}
             \item AWS (Amazon Web Services)
+            \pause
             \item Google Cloud.
         \end{enumerate}
         \pause 
@@ -151,6 +161,7 @@ Two perspectives :
     \begin{enumerate}
         \item Open Source 
         \begin{itemize}
+            \pause
             \item[-] Many eyes on source code ensures quality
         \end{itemize}
         \pause
@@ -177,8 +188,6 @@ Two perspectives :
         \item Availability of Software
         \pause
         \begin{itemize}
-            \item[-] Almost \emph{All} computer clusters are Linux based
-            \pause
             \item[-] Vast majority of scientific software was developed on Linux 
             \pause
             \item[-] Most scientific software on Linux is Open Source 
@@ -209,7 +218,10 @@ Two perspectives :
             \item[-] Raspberry Pi is a \$35 computer
         \end{itemize}
         \pause
-        \item Free : cost = \$0, i.e. ``free as in beer"
+        \item Free : cost = \$0, 
+        \begin{itemize}
+            \item[-] free as in beer
+        \end{itemize}
         \pause
         \item Open Source 
         \begin{itemize}
@@ -277,7 +289,7 @@ Two perspectives :
     \bigskip
     \item Q : What is ``parallel computing"?
     \pause
-    \item A : It is breaking up independent tasks and running them simultaneously so the complete faster.
+    \item A : It is breaking up independent tasks and running them simultaneously so they complete faster.
     \bigskip
 \end{itemize}
 \end{frame}
@@ -307,19 +319,6 @@ Two perspectives :
     \end{enumerate}
 \end{itemize}
 \end{frame}
-
-
-\begin{frame}
-\frametitle{HPC Cluster Architecture}
-\begin{picture}(320,250)  %must be related to where it is centered
-%\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File.eps}}
-%\setbeamercolor{background canvas}{bg=}
-%\includepdf{images/GPFS_File-eps-converted-to.pdf}
-%\includepdf{images/GPFS_File-eps-converted-to.pdf}
-\put(65, 70){\includegraphics[height=2.5in]{images/franklin-cluster.pdf}}
-\end{picture}
-\end{frame}
-
 
 
 
@@ -364,13 +363,13 @@ eChart:
     \begin{enumerate}
         \item Host Name = r1pl-hpcf-log01
         \pause
-        \item Check Connection->SSH-> X11-> Enable X11 forwarding. 
+        \item Check Connection$\rightarrow$ SSH $\rightarrow$ X11 $\rightarrow$ Enable X11 forwarding. 
         \pause
-        \item Check Connection-> SSH ->Enable compression
+        \item Check Connection$\rightarrow$ SSH $\rightarrow$ Enable compression
         \pause
         \item Click "Open"
         \pause
-        \item In Putty Window, enter your userID and password when prompted
+        \item Enter your userID and password when prompted
     \end{enumerate}
 \end{itemize}
 \end{frame}
@@ -395,13 +394,16 @@ eChart:
 \begin{itemize}
     \item Regular users (you)
     \bigskip
+    \pause
 
     \item Priveleged users (Yuan and myself)
     \bigskip
+    \pause
 
     \begin{itemize}
         \item Can modify \code{/usr}, \code{/opt}, etc.
         \bigskip
+        \pause
 
         \item \code{sudo}
     \end{itemize}
@@ -447,6 +449,7 @@ eChart:
     \pause
     \item Command and Edit modes.
     \bigskip
+    \pause
     \item \code{esc} to enter command mode
     \pause
     \bigskip
@@ -457,7 +460,6 @@ eChart:
     \pause
     \bigskip
     \item To quit, in command mode : \code{esc} \code{:q}
-    \pause
 \end{itemize}
 \end{frame}
 
@@ -501,7 +503,6 @@ eChart:
     \pause
     \bigskip
     \item Use \code{/somestring} to search for \code{somestring} within the man page.
-    \pause
 \end{itemize}
 \end{frame}
 
@@ -572,10 +573,10 @@ eChart:
 \code{rm}- delete files or directories. Be Careful. E.g.
 \bigskip
 \begin{itemize}
-    \item \code{rm $\sim$/Scratch/file.txt}
+    \item \code{rm $\sim$/file.txt}
     \pause
     \bigskip
-    \item \code{rm -r $\sim$/Scratch/newdir}
+    \item \code{rm -r $\sim$/newdir}
 \end{itemize}
 \end{frame}
 
@@ -600,103 +601,91 @@ eChart:
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Permissions}
-\code{chmod}- Change permissions.
-E.g.
-\begin{itemize}
-    \item \code{ls -l $\sim$/Scratch/file.txt}, yields : 
-    \hspace{5mm} \code{-rw-r--r--  1 user group 0 Apr  5 09:01 file.txt}
-    \smallskip
-\end{itemize}
-\bigskip
-
-
-% http://www.texample.net/tikz/examples/beamer-arrows/
-% https://tex.stackexchange.com/a/83434/84495
-\begin{tikzpicture}[overlay]
-
-%\coordinate (G) at (2.3,6.1);
-\coordinate (A) at (1.15,1.3);
-\coordinate (AU) at (1.15,1.5);
-\coordinate (B) at (1.65,1.3);
-\coordinate (BU) at (1.8,1.5);
-%\coordinate (AB1) at (1.35,1.3);
-\coordinate (AB1) at (1.55,1.3);
-\coordinate (AB2) at (0.5,0.3);
-
-
-\coordinate (C) at (1.80,1.3);
-\coordinate (D) at (2.35,1.3);
-\coordinate (CD1) at (2.15,1.3);
-\coordinate (CD2) at (2.15,0.3);
-
-
-\coordinate (E) at (2.50,1.3);
-\coordinate (EU) at (2.50,1.5);
-\coordinate (F) at (3.0,1.3);
-\coordinate (F1) at (3.15,1.3);
-\coordinate (FU) at (3.15,1.5);
-\coordinate (EF1) at (2.75,1.3);
-\coordinate (EF2) at (3.60,0.4);
-
-\draw [red,<-<,ultra thick]    (A) to[out=0,in=0] (B);
-\draw [red,-]    (A) -- (AU);
-\draw [red,-]    (C) -- (BU);
-\draw [red,-,ultra thick]    (AB1) -- (AB2);
-\draw [blue,<-<,ultra thick]   (C) to[out=0,in=0] (D);
-\draw [blue,-,ultra thick]   (CD1) -- (CD2);
-\draw [black,<-<,ultra thick] (E) to[out=0,in=0] (F);
-\draw [black,-]    (E) -- (EU);
-\draw [black,-]    (F1) -- (FU);
-\draw [black,-,ultra thick,bend right] (EF1) to[out=0,in=0] (EF2);
-\node[draw,red] at (0,0) {you};
-\node[draw,blue] at (2.15,-0) {group};
-\node[draw,black] at (4.8, -0) {everyone else};
-\draw [red,-,ultra thick]    (0.5,0) -- (2.25,-0.6);
-\draw [blue,-,ultra thick]   (2.6,-0.25) -- (2.6,-0.6);
-\draw [black,-,ultra thick]  (3.5,-0.250) -- (2.8,-0.6);
-\end{tikzpicture}
-\bigskip
-\pause
-\begin{itemize}
-    \smallskip
-    \item \code{chmod 755 file.txt}
-    \pause
-    \bigskip
-    %\item \code{ls -l $\sim$/Scratch/file.txt}, yields : 
-    %\hspace{5mm} \code{-rwxr-xr-x  1 user group 0 Apr  5 09:01 file.txt}
-    \item {\small \code{-rwxr-xr-x  1 user group 0 Apr  5 09:01 file.txt}}
-\end{itemize}
-\pause
-
-\bigskip
-Explanation:
-\begin{itemize}
-    %\item First number is you.
-    %\item Second number is for your group (i.e. lab).
-    %\item Third number is for everyone else.
-    \item \code{r} = 4, \code{w} = 2, \code{x} = 1
-    \item \code{7} = \code{4} + \code{2} + \code{1} = read (\code{r}) + write (\code{w}) +  execute(\code{x})
-    \item \code{5} = \code{4} + \code{1} = read (\code{r}), execute(\code{x})
-\end{itemize}
-
-
-\end{frame}
-
-
-\section{HPC}
-
-\begin{frame}
-\frametitle{Basic Commands}
-\code{echo}- echo back string. E.g.
-\bigskip
-\begin{itemize}
-    \item \code{echo "Hello World"}
-\end{itemize}
-\end{frame}
-
-
+%\begin{frame}
+%\frametitle{Permissions}
+%\code{chmod}- Change permissions.
+%E.g.
+%\begin{itemize}
+%    \item \code{ls -l $\sim$/Scratch/file.txt}, yields : 
+%    \hspace{5mm} \code{-rw-r--r--  1 user group 0 Apr  5 09:01 file.txt}
+%    \smallskip
+%\end{itemize}
+%\bigskip
+%
+%
+%% http://www.texample.net/tikz/examples/beamer-arrows/
+%% https://tex.stackexchange.com/a/83434/84495
+%\begin{tikzpicture}[overlay]
+%
+%%\coordinate (G) at (2.3,6.1);
+%\coordinate (A) at (1.15,1.3);
+%\coordinate (AU) at (1.15,1.5);
+%\coordinate (B) at (1.65,1.3);
+%\coordinate (BU) at (1.8,1.5);
+%%\coordinate (AB1) at (1.35,1.3);
+%\coordinate (AB1) at (1.55,1.3);
+%\coordinate (AB2) at (0.5,0.3);
+%
+%
+%\coordinate (C) at (1.80,1.3);
+%\coordinate (D) at (2.35,1.3);
+%\coordinate (CD1) at (2.15,1.3);
+%\coordinate (CD2) at (2.15,0.3);
+%
+%
+%\coordinate (E) at (2.50,1.3);
+%\coordinate (EU) at (2.50,1.5);
+%\coordinate (F) at (3.0,1.3);
+%\coordinate (F1) at (3.15,1.3);
+%\coordinate (FU) at (3.15,1.5);
+%\coordinate (EF1) at (2.75,1.3);
+%\coordinate (EF2) at (3.60,0.4);
+%
+%\draw [red,<-<,ultra thick]    (A) to[out=0,in=0] (B);
+%\draw [red,-]    (A) -- (AU);
+%\draw [red,-]    (C) -- (BU);
+%\draw [red,-,ultra thick]    (AB1) -- (AB2);
+%\draw [blue,<-<,ultra thick]   (C) to[out=0,in=0] (D);
+%\draw [blue,-,ultra thick]   (CD1) -- (CD2);
+%\draw [black,<-<,ultra thick] (E) to[out=0,in=0] (F);
+%\draw [black,-]    (E) -- (EU);
+%\draw [black,-]    (F1) -- (FU);
+%\draw [black,-,ultra thick,bend right] (EF1) to[out=0,in=0] (EF2);
+%\node[draw,red] at (0,0) {you};
+%\node[draw,blue] at (2.15,-0) {group};
+%\node[draw,black] at (4.8, -0) {everyone else};
+%\draw [red,-,ultra thick]    (0.5,0) -- (2.25,-0.6);
+%\draw [blue,-,ultra thick]   (2.6,-0.25) -- (2.6,-0.6);
+%\draw [black,-,ultra thick]  (3.5,-0.250) -- (2.8,-0.6);
+%\end{tikzpicture}
+%\bigskip
+%\pause
+%\begin{itemize}
+%    \smallskip
+%    \item \code{chmod 755 file.txt}
+%    \pause
+%    \bigskip
+%    %\item \code{ls -l $\sim$/Scratch/file.txt}, yields : 
+%    %\hspace{5mm} \code{-rwxr-xr-x  1 user group 0 Apr  5 09:01 file.txt}
+%    \item {\small \code{-rwxr-xr-x  1 user group 0 Apr  5 09:01 file.txt}}
+%\end{itemize}
+%\pause
+%
+%\bigskip
+%Explanation:
+%\begin{itemize}
+%    %\item First number is you.
+%    %\item Second number is for your group (i.e. lab).
+%    %\item Third number is for everyone else.
+%    \item \code{r} = 4, \code{w} = 2, \code{x} = 1
+%    \item \code{7} = \code{4} + \code{2} + \code{1} = read (\code{r}) + write (\code{w}) +  execute(\code{x})
+%    \item \code{5} = \code{4} + \code{1} = read (\code{r}), execute(\code{x})
+%\end{itemize}
+%
+%
+%\end{frame}
+%
+%
 
 %\begin{frame}
 %\frametitle{Permissions}
@@ -725,10 +714,415 @@ Explanation:
 %\end{frame}
 %
 
+\section{HPC}
+
+\begin{frame}
+\frametitle{HPC Cluster Architecture}
+\begin{picture}(320,250)  %must be related to where it is centered
+%\put(0, 70){\includegraphics[height=2.5in]{images/GPFS_File.eps}}
+%\setbeamercolor{background canvas}{bg=}
+%\includepdf{images/GPFS_File-eps-converted-to.pdf}
+%\includepdf{images/GPFS_File-eps-converted-to.pdf}
+\put(65, 70){\includegraphics[height=2.5in]{images/franklin-cluster.pdf}}
+\end{picture}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{What is SLURM?}
+Need method for managing cluster resources.
+\bigskip
+\begin{itemize}
+    \pause
+    \item Enter SLURM - A Workload Manager
+    \bigskip
+    \pause
+    \begin{enumerate}
+        \item Permits efficient (and fair) utilization of Cluster resources.
+        \pause
+        \bigskip
+        \item This is your interface with the computer cluster
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+
+%\begin{frame}
+%\frametitle{Slurm Concepts}
+%\begin{itemize}
+%    \item Job
+%    \pause 
+%    \begin{enumerate}
+%        \item Primary way of requesting resources
+%        \pause
+%        \item Composed of one or more Steps
+%    \end{enumerate}
+%    \bigskip
+%    \pause
+%    \item Step
+%    \begin{enumerate}
+%        \item A way of dividing the resources allocated
+%        \pause
+%        \item Can be run serially or in parallel within a job
+%        \pause
+%        \item Composed of one or more Tasks
+%    \end{enumerate}
+%    \bigskip
+%    \pause
+%    \item Task
+%    \begin{enumerate}
+%        \item Composed of one or more CPUs
+%    \end{enumerate}
+%    \bigskip
+%\end{itemize}
+%\end{frame}
+
+
+
+%\begin{frame}
+%\frametitle{Franklin}
+%A typical job on Franklin : 
+%\bigskip
+%\begin{itemize}
+%    \item 1 Node 
+%    \bigskip
+%    \pause
+%    \item 1 Task
+%    \bigskip
+%    \pause
+%    \item Multiple CPUs
+%    \bigskip
+%    \pause
+%\end{itemize}
+%Complicated jobs may benefit from utilizing multiple steps and tasks, most jobs will not.
+%\end{frame}
+%
+
+\begin{frame}
+\frametitle{How to use Slurm?}
+\begin{itemize}
+    \item \code{sbatch} - Non-interactive bash script
+    \bigskip
+    \pause
+    \item \code{srun} - Interactive sessions 
+    \bigskip
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{sbatch}
+Examples of Usage:
+\bigskip
+\begin{itemize}
+    \item \code{sbatch myscript.sh}
+    \bigskip
+    \pause
+    \item \code{sbatch --cpus-per-task=20 myscript.sh}
+    \bigskip
+    \pause
+    \begin{enumerate}
+        \item NOTE : specifying 20 cores, will NOT magically make your script use 20 cores.
+                     You will need to specify that within your shell script \code{myscript.sh}
+    \end{enumerate}
+    \pause
+    \item \code{sbatch --gres=gpu myscript.sh}
+    \bigskip
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{sbatch}
+Two ways to pass arguments to sbatch
+\smallskip
+\begin{itemize}
+    \item Command line
+        \smallskip
+        \begin{enumerate}
+            \item E.g. \code{sbatch OPTIONS myscript.sh}
+            \pause
+            \smallskip
+            \item Popular \code{OPTIONS}
+            \begin{enumerate}[a)]
+                \item \code{--cpus-per-task=} 
+                \pause
+                \smallskip
+                \item \code{--partition=himem}
+                \pause
+                \smallskip
+                \item \code{--gres=gpu}
+            \end{enumerate}
+            \pause
+            \smallskip
+            \item Preempts options set in bash script
+        \end{enumerate}
+        \smallskip
+
+    \pause
+    \item In Bash Script, \code{myscript.sh}
+        \pause
+        \smallskip
+        \begin{enumerate}
+            \item Popular \code{OPTIONS}
+            \pause
+            \begin{enumerate}[a)]
+                \item \code{\#SBATCH --cpus-per-task=} 
+                \pause
+                \smallskip
+                \item \code{\#SBATCH --partition=himem}
+                \pause
+                \smallskip
+                \item \code{\#SBATCH --gres=gpu}
+            \end{enumerate}
+        \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{sbatch}
+Example \code{myscript.sh}: 
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+    #!/bin/bash
+    #SBATCH --cpus-per-task=10
+    set -e
+    echo "Hello World"
+    sleep 30
+\end{lstlisting}
+\bigskip
+\bigskip
+Submit with \code{sbatch myscript.sh}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{sbatch}
+Output from batch script (\code{slurm-1795906.out}), will have some of the below information (some columns abbreviated for clarity)
+\begingroup
+\tiny
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+Hello World
+Job Statistics for 179:
+       JobID   User Start End   Elapsed  MaxRSS   TotalCPU State Exit  NodeList
+------------ ------ ----- --- --------- ------- ---------- ----- ---- ---------
+         179 user01 ..... ...  00:00:00          00:00.009 COMPL  0:0    node01
+   179.batch        ..... ...  00:00:00       0  00:00.008 COMPL  0:0    node01
+  179.extern        ..... ...  00:00:00       0   00:00:00 COMPL  0:0    node01
+CPU Efficiency: 0.00% of 00:00:00 core-walltime
+\end{lstlisting}
+\endgroup
+\end{frame}
+
+
+%\begin{frame}[fragile]
+%\frametitle{sbatch}
+%Himem partition allocation example \code{myscript\_himem.sh}: 
+%\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+%    #!/bin/bash
+%    #SBATCH --cpus-per-task=2
+%    #SBATCH --partition=himem
+%    set -e
+%    echo "Hello World"
+%    sleep 30
+%\end{lstlisting}
+%\bigskip
+%\bigskip
+%Submit with \code{sbatch myscript\_himem.sh}
+%\end{frame}
+
+
+
+%\begin{frame}[fragile]
+%\frametitle{sbatch}
+%Broken Example \code{myscript\_broken.sh}: 
+%\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash,showstringspaces=false]
+%    #!/bin/bash
+%    #SBATCH --cpus-per-task=2
+%    #SBATCH --partition=himem
+%    #SBATCH --mail-user=First.Last@gmail.com
+%    #SBATCH --mail-type=FAIL,TIME_LIMIT_90
+%    set -e
+%    echo "I'm looking in the forbidden location"
+%    ls /root/
+%    echo "I never make it here"
+%\end{lstlisting}
+%\bigskip
+%\bigskip
+%Submit with \code{sbatch myscript\_broken.sh}
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{srun}
+\code{srun} - Interactive allocation 
+\bigskip
+\begin{itemize}
+    \item Use when needing to interactively run long processes. E.g.
+        \begin{enumerate}
+            \pause
+            \item compiling
+            \pause 
+            \item developing and testing workflows
+            \pause 
+            \item downloading data
+            \pause 
+            \item GUI editors, e.g. RStudio
+            \pause 
+            \item Plotting, e.g. gnuplot, matplotlib
+        \end{enumerate}
+    \pause
+    \item Example command : \code{srun --x11 --cpus-per-task=2 --pty bash}
+        \pause
+        \begin{enumerate}
+            \item \code{--x11} option only needed for GUIs (e.g. RStudio)
+            \pause
+            \item For \code{--x11} to work, you must have X11 server installed
+            \pause
+            \begin{enumerate}[a)]
+                \item Vcxsrv for Windows
+                \pause
+                \item XQuartz for Mac
+            \end{enumerate}
+        \end{enumerate}
+    \pause
+    \item \code{srun} takes all same command line options as \code{sbatch}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Monitoring Jobs Progress}
+There are several ways to monitor jobs progress.  
+\bigskip
+\begin{itemize}
+    \item \code{squeue}
+    \pause
+    \bigskip
+    \item \code{scontrol}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Monitoring Jobs Progress}
+\code{squeue}, e.g. 
+\begingroup
+\tiny
+\begin{lstlisting}[backgroundcolor = \color{codegray},showstringspaces=false]
+   JOBID PARTITION          NAME     USER ST       TIME  NODES      CPUS NODELIST(REASON)
+ 1791312   general gromacs_test_   user01  R 9-21:30:30      1        20 node02
+ 1791313   general gromacs_test_   user01  R 9-21:30:09      1        20 node03
+ 1791316   general          his1   user01  R 9-21:28:56      1        20 node06
+ 1791317   general          his1   user01  R 9-21:28:53      1        20 node07
+ 1794106   general          test   user02  R 3-20:17:31      1        20 gpu03
+ 1794236   general          bash   user03  R 2-23:33:53      1         1 node01
+\end{lstlisting}
+\endgroup
+\end{frame}
+
+
+
+%\begin{frame}[fragile]
+%\frametitle{Monitoring Jobs Progress}
+%\code{scontrol}, e.g. \code{ scontrol show jobid 1794106}
+%\begingroup
+%\tiny
+%\begin{lstlisting}[backgroundcolor = \color{codegray},showstringspaces=false]
+%JobId=1794106 JobName=test
+%   UserId=user02(600) GroupId=group01(1181939003) MCS_label=N/A
+%   Priority=28575 Nice=0 Account=gdpairlab QOS=normal
+%   JobState=RUNNING Reason=None Dependency=(null)
+%   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+%   RunTime=3-20:25:41 TimeLimit=7-00:00:00 TimeMin=N/A
+%   SubmitTime=2019-04-15T12:30:01 EligibleTime=2019-04-15T12:30:01
+%   StartTime=2019-04-15T12:30:02 EndTime=2019-04-22T12:30:02 Deadline=N/A
+%   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+%   LastSchedEval=2019-04-15T12:30:02
+%   Partition=general AllocNode:Sid=qmaster01:20116
+%   ReqNodeList=gpu03 ExcNodeList=(null)
+%   NodeList=gpu03
+%   BatchHost=gpu03
+%   NumNodes=1 NumCPUs=20 NumTasks=1 CPUs/Task=20 ReqB:S:C:T=0:0:*:*
+%   TRES=cpu=20,mem=120G,node=1,billing=20,gres/gpu=1
+%   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+%   MinCPUsNode=20 MinMemoryCPU=6G MinTmpDiskNode=0
+%   Features=(null) DelayBoot=00:00:00
+%   Gres=gpu:1 Reservation=(null)
+%   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+%   Command=/gpfs0/home/group01/user02/ram_test/start_gtn.sh
+%   WorkDir=/gpfs0/home/group01/user02/ram_test
+%   StdErr=/gpfs0/home/group01/user02/ram_test/test_1794106.out
+%   StdIn=/dev/null
+%   StdOut=/gpfs0/home/group01/user02/ram_test/test_1794106.out
+%   Power=
+%\end{lstlisting}
+%\endgroup
+%\end{frame}
+
+
+
+
+%\begin{frame}[fragile]
+%\frametitle{Homework 1 - Illustrating jobs, steps and tasks}
+%Consider the following scripts
+%
+%\medskip
+%\code{step.sh}
+%\begingroup
+%\small
+%\begin{lstlisting}[backgroundcolor = \color{codegray},showstringspaces=false, language=Bash]
+%#!/bin/bash
+%#SBATCH --cpus-per-task=10
+%#SBATCH --tasks-per-node=2
+%srun --ntasks=1 bash other.sh first_step &
+%srun --ntasks=1 bash other.sh second_step &
+%wait
+%\end{lstlisting}
+%\endgroup
+
+
+%\medskip
+%\code{other.sh}
+%\begingroup
+%\small
+%\begin{lstlisting}[backgroundcolor = \color{codegray},showstringspaces=false, language=Bash]
+%#!/bin/bash
+%date
+%echo "Hello from $1"
+%sleep 30
+%echo "World from $1"
+%date
+%\end{lstlisting}
+%\endgroup
+%\end{frame}
+%
+%
+
+%\begin{frame}
+%\frametitle{Homework 1 - Illustrating jobs, steps and tasks}
+%\begin{itemize}
+%    \item Submit job \code{step.sh}
+%    \bigskip
+%    \item Remove the \code{\&} at the end of the lines. What happens?
+%    \bigskip
+%    \item Remove the \code{\&} at the end of the lines along with \code{wait}. What happens?
+%    \bigskip
+%    \item Remove the \code{--ntasks=1}, along with \code{\&} and \code{wait}. What happens?
+%    \bigskip
+%    \item Try different combinations.
+%\end{itemize}
+%\end{frame}
 
 \begin{frame}
 \frametitle{Homework}
-Create a bash script that says ``Hello World". Make it executable. 
+Create a bash script that says ``Hello World" and submit it to the cluster.
 
 \bigskip
 
