@@ -31,6 +31,9 @@
     \raggedleft \smallFont #1
 \end{textblock*}}
 
+% https://tex.stackexchange.com/a/61016/84495
+\newcommand{\chref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+
 %Get rid of ugly copenhagen default symbol for enumerate
 \setbeamertemplate{enumerate items}[default]   
 
@@ -1133,14 +1136,14 @@ Create a bash script that says ``Hello World" and submit it to the cluster.
 \begin{frame}
 \frametitle{References}
 \begin{itemize}
-    \item https://www.opensourceforu.com/2020/03/reasons-to-use-linux/
-    \item https://www.extremetech.com/extreme/155392-international-space-station-switches-from-windows-to-linux-for-improved-reliability
-    \item https://medium.com/geekculture/how-to-stop-windows-10-from-spying-on-you-b071134a11f6
-    \item https://washingtonsblog.com/microsoft-programmed-in-nsa-backdoor-in-windows-by-1999/
-    \item https://security.stackexchange.com/a/96715/94605
-    \item https://medium.com/geekculture/how-linux-helped-us-land-on-mars-a2ceb54cf6e
-    \item https://www.lbto.org/software-eng-202102.html
-    \item https://www.skatelescope.org/software-and-computing/
+    \item \chref{https://www.opensourceforu.com/2020/03/reasons-to-use-linux/}{Ten Reasons why we should use Linux}
+    \item \chref{https://www.extremetech.com/extreme/155392-international-space-station-switches-from-windows-to-linux-for-improved-reliability}{ISS switches from Windows to Linux, for improved reliability}
+    \item \chref{https://medium.com/geekculture/how-to-stop-windows-10-from-spying-on-you-b071134a11f6}{How to Stop Windows 10 From Spying on You}
+    \item \chref{https://washingtonsblog.com/microsoft-programmed-in-nsa-backdoor-in-windows-by-1999/}{NSA Built Back Door In All Windows Software by 1999}
+    \item \chref{https://security.stackexchange.com/a/96715/94605}{How does Windows 10 allow Microsoft to spy on you?}
+    \item \chref{https://medium.com/geekculture/how-linux-helped-us-land-on-mars-a2ceb54cf6e}{How Linux Helped Us Land On Mars}
+    \item \chref{https://www.lbto.org/software-eng-202102.html}{Large Binocular Telescope Software}
+    \item \chref{https://www.skatelescope.org/software-and-computing/}{SKA Software and Computing}
 \end{itemize}
 \end{frame}
 
