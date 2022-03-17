@@ -144,24 +144,29 @@ Linux in Science :
 
 \begin{frame}
 \frametitle{Why use Linux?}
-Two user perspectives : 
+Two perspectives : 
 \begin{itemize}
     \item System Administrator / Power user
+    \pause
     \begin{enumerate}
         \item Open Source 
         \begin{itemize}
-            \item[-] Many eyes find bugs faster and prevent malicious actors
+            \item[-] Many eyes on source code ensures quality
         \end{itemize}
         \pause
         \item High Security 
         \pause
         \item High Stability
         \begin{itemize}
+            \pause
             \item[-] e.g. CentOS 7.X has a 10 year lifespan
+            \pause
+            \item[-] Installing new software doesn't require reboot
         \end{itemize}
         \pause
         \item Easy to Manage
         \begin{itemize}
+            \pause
             \item[-] There aren't barriers to getting work done, i.e. ``autocorrect"
             \pause
             \item[-] The OS doesn't take the attitude that the user is an idiot.
@@ -170,6 +175,7 @@ Two user perspectives :
         \end{itemize}
         \pause
         \item Availability of Software
+        \pause
         \begin{itemize}
             \item[-] Almost \emph{All} computer clusters are Linux based
             \pause
@@ -178,11 +184,19 @@ Two user perspectives :
             \item[-] Most scientific software on Linux is Open Source 
         \end{itemize}
     \end{enumerate}
-    \pause
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Why use Linux?}
+\begin{itemize}
     \item Personal user
+    \pause
     \begin{enumerate}
         \item Built for programming
         \begin{itemize}
+            \pause
             \item[-] vi / vim / emacs
             \pause
             \item[-] powerful debuggers (e.g. \code{pdb}, \code{gdb})
@@ -192,18 +206,31 @@ Two user perspectives :
         \pause
         \item Can run on old / underpowered hardware
         \begin{itemize}
-            \item[-] Raspberry Pi OS runs on a \$35 computer
+            \item[-] Raspberry Pi is a \$35 computer
         \end{itemize}
         \pause
-        \item Free : cost = \$, i.e. ``free as in beer"
+        \item Free : cost = \$0, i.e. ``free as in beer"
         \pause
-        \item Open Source : Free as in freedom 
+        \item Open Source 
         \begin{itemize}
+            \item[-] Free as in freedom 
+            \pause
             \item[-] You can change the OS code (i.e. free as in freedom)
         \end{itemize}
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Why use Linux?}
+\begin{itemize}
+    \item Personal user
+    \begin{enumerate}
         \pause
         \item Highly customizable
         \begin{itemize}
+            \pause
             \item[-] You can configure your environment how you want to in a transparent way
         \end{itemize}
         \pause
@@ -212,23 +239,29 @@ Two user perspectives :
             \item[-] https://stackoverflow.com/
             \pause
             \item[-] https://unix.stackexchange.com/
-            \pause
-            \item[-] https://ubuntuforums.org/
         \end{itemize}
         \pause
         \item Stability
         \begin{itemize}
+            \pause
             \item[-] No `convenient' forced reboots to update / upgrade the OS.
         \end{itemize}
+        \pause
         \item Security, Safety and Privacy
         \begin{itemize}
+            \pause
             \item[-] No NSA keys
+            \pause
             \item[-] You won't become a monetized consumer product by your OS.
         \end{itemize}
+        \pause
         \item All High Performance Computing (HPC) clusters use Linux
     \end{enumerate}
 \end{itemize}
 \end{frame}
+
+
+
 
 \section{HPC}
 
@@ -239,14 +272,23 @@ Two user perspectives :
     \pause
     \item A : A collection of computers connected on a high speed network with
               shared storage that specialize in distributed / parallel computing
+    \pause
     \bigskip
     \item Q : What is High Performance Computing good for?
     \pause
     \item A : Solving problems too big to solve on your desktop or laptop computers.
     \bigskip
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{What is HPC?}
+\begin{itemize}
     \item Q : What some examples of HPC type problems in the life sciences?
     \pause
     \item A : Examples : 
+    \pause
     \begin{enumerate}
         \item Aligning dozens of fastq files to the human genome at the same time
         \pause
@@ -262,7 +304,6 @@ Two user perspectives :
         \pause
         \item Machine Learning
     \end{enumerate}
-    \bigskip
 \end{itemize}
 \end{frame}
 
@@ -274,7 +315,7 @@ Two user perspectives :
 %\setbeamercolor{background canvas}{bg=}
 %\includepdf{images/GPFS_File-eps-converted-to.pdf}
 %\includepdf{images/GPFS_File-eps-converted-to.pdf}
-\put(0, 70){\includegraphics[height=2.5in]{images/franklin-cluster.pdf}}
+\put(65, 70){\includegraphics[height=2.5in]{images/franklin-cluster.pdf}}
 \end{picture}
 \end{frame}
 
@@ -298,27 +339,39 @@ Mac:
     \item Open Terminal (Finder $\Rightarrow$ Utilities $\Rightarrow$ Terminal)
     \item \code{ssh -X username@r1pl-hpcf-log01}
 \end{itemize}
+\end{frame}
 
-\pause
-
+\begin{frame}
+\frametitle{How to Connect}
 eChart:
 \begin{itemize}
     \item Go to: nchapps.nationwidechildrens.org/
+    \pause
     \item Click on ‘Desktops’ at top
+    \pause
     \item Click on eChart Connect Desktop-Win10
+    \pause
     \item Click finder magnifying glass. Search for HPC
+    \pause
     \item Click XLaunch. Click Next / Finish for all following windows.  A little ‘x’ will
           be at the bottom right of your screen
+    \pause
     \item Click finder magnifying glass. Search for HPC.
+    \pause
     \item Click Putty. 
+    \pause
     \begin{enumerate}
         \item Host Name = r1pl-hpcf-log01
+        \pause
         \item Check Connection->SSH-> X11-> Enable X11 forwarding. 
+        \pause
         \item Check Connection-> SSH ->Enable compression
+        \pause
         \item Click "Open"
+        \pause
+        \item In Putty Window, enter your userID and password when prompted
     \end{enumerate}
 
-In Putty Window, enter your userID and password when prompted
 \end{itemize}
 \end{frame}
 
